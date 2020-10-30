@@ -1,3 +1,20 @@
+<?php
+require_once('conexion.php');
+
+if(!empty($_POST)){  //valida que el formulario tenga datos
+   $nombre = $_POST['nombre']; // obtiene dato ingresado en el campo   
+   $correo = $_POST['correo'];  // obtiene dato ingresado en el campo correo del formulario  
+   $pass = $_POST['password']; // obtiene dato ingresado en el contraseña usuario del formulario  
+   $rol = $_POST['id_rol'];
+   $queryUser = "INSERT INTO usuario (nombre,correo,password,id_rol) VALUES('$nombre','$correo', '$pass','$rol')";  //query para registrar 
+   $conn->exec($queryUser); //ejecuta query
+   
+   header('Location: login.php');  // despues de registrar redirecciona a login.php
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +34,7 @@
 	   
 		<input type="password" name="password" class="input-control"  placeholder="Contraseña:">
  
-		<input type="hidden" name="id_rol" value="1">
+		<input type="hidden" name="id_rol" value="2">
 		
 		<input type="submit" value="Registrar"  name="registrar" class="log-btn">
 		</form>

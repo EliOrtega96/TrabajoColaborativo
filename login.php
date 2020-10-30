@@ -17,6 +17,16 @@
        <input  type="text" name="nombre" class="input-control"  placeholder="Usuario:">
       
        <input  type="password" name="password" class="input-control"  placeholder="Contraseña:">
+       <?php
+       if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+       {
+          echo "<div style='color:red'>Usuario y/o contraseña invalido </div>";
+       }else
+       if (isset($_GET["error_usr"]) == 'login') {
+        echo "<div style='color:red'>El nombre de usuario no existe  </div>";
+           # code...
+       }
+     ?>
        
        <input type="submit" value="Iniciar Sesion"  name="registrar" class="log-btn">
        </form>
